@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SBA</title>
+    <title>SBA | <%= title %></title>
 </head>
 <body>
 
@@ -20,7 +20,20 @@
     </nav>
 
     <div class="charcters content">
-        <h2>All Charcters</h2>
+        <h2>Justice League Team</h2>
+        
+        <% if (charcters.length > 0) { %>
+           <% charcters.forEach(charcter => { %>
+
+                <h3 class="name"><%= charcter.name %></h3>
+                <p class="species">Species: <%= charcter.species %></->
+                <p class="enemy">Enemy: <%= charcter.enemy %></p>
+
+            <% }) %>
+        <% } else { %>   
+            <p>You have no charcters in your Justice League Team</p>
+        <% } %>
+
     </div>
     
 </body>

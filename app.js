@@ -10,17 +10,20 @@ app.set('view engine', 'ejs');
 app.listen(3000);
 
 app.get('/', (req, res) => {
-    //res.send('<p>home page</p>');
-    res.render('index');
+    const charcters = [
+        {name: 'Batman', species: 'Human', enemy: 'The Joker'},
+        {name: 'Superman', species: 'Kryptonian', enemy: 'Lex Luther'},
+        {name: 'Wonder Woman', species: 'God', enemy: 'Cheetah'}
+    ]
+    res.render('index', { title: 'Home', charcters});
 });
 
 app.get('/about', (req, res) => {
-    //res.send('<p>about page</p>');
-    res.render('about');
+    res.render('about', { title: 'About' });
 });
 
 app.get('/charcter/create', (req, res) => {
-    res.render('create');
+    res.render('create', { title: 'Create New Charcter' });
 })
 
 // Redirects
@@ -31,5 +34,5 @@ app.get('/about-us', (req, res) => {
 // 404 page
 // Middlewear
 app.use((req, res) => {
-    res.status(404).render('404')
+    res.status(404).render('404', { title: '404' })
 })
