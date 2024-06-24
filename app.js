@@ -1,7 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
-const Character = require('./models/characters.js')
+const characterRoutes = require('./routes/characterRoutes.js')
 
 // Express App
 const app = express();
@@ -32,55 +32,8 @@ app.get('/about', (req, res) => {
     res.render('about', { title: 'About' });
 });
 
-app.get('/characters/create', (req, res) => {
-    res.render('create', { title: 'Create New Character' });
-})
-
 // Character Routes
-app.get('/characters', (req, res) => {
-    Character.find().sort({ createdAt: 1})
-        .then((result) => {
-            res.render('index', { title: 'All Characters', characters: result })
-        })
-        .catch((err) => {
-            console.log(err)
-        })
-})
-
-app.post('/characters', (req, res) => {
-    const character = new Character(req.body)
-
-    character.save()
-        .then((result) => {
-            res.redirect('/characters');
-        })
-        .catch ((err) => {
-            console.log(err);
-        });
-});
-
-app.get('/characters/:id', (req, res) => {
-    const id = req.params.id;
-    Character.findById(id)
-        .then(result => {
-            res.render('details', { character: result, title: 'Character Details'});
-        })
-        .catch((err) => {
-            console.log(err);
-        });
-});
-
-app.delete('/characters/:id', (req, res) => {
-    const id = req.params.id;
-
-    Character.findByIdAndDelete(id)
-        .then((result) => {
-            res.json({ redirect: '/characters' })
-        })
-        .catch((err) => {
-            console.log(err);
-        })
-})
+app.use('/characters', characterRoutes);
 
 // 404 page
 // Middlewear
