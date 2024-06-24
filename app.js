@@ -19,7 +19,8 @@ app.set('view engine', 'ejs');
 // Static Built-in Middlewear for Style Sheet
 app.use(express.static('styles'));
 
-// Build in Middlewear with Morgan
+// Other Middlewear
+app.use(express.urlencoded({ extended: true }));
 app.use(morgan('dev'));
 
 // Routes -----
@@ -31,19 +32,26 @@ app.get('/about', (req, res) => {
     res.render('about', { title: 'About' });
 });
 
-// Redirects
-app.get('/about-us', (req, res) => {
-    res.redirect('/about');
-})
-
 // Character Routes
 app.get('/characters', (req, res) => {
-    Character.find().sort({ createdAt: -1})
+    Character.find().sort({ createdAt: 1})
         .then((result) => {
             res.render('index', { title: 'All Characters', characters: result })
         })
         .catch((err) => {
             console.log(err)
+        })
+})
+
+app.post('/characters', (req, res) => {
+    const character = new Character(req.body)
+
+    character.save()
+        .then((result) => {
+            res.redirect('/characters');
+        })
+        .catch ((err) => {
+            console.log(err);
         })
 })
 

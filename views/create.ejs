@@ -8,21 +8,21 @@
     <%- include('./partials/nav.ejs') %>
 
     <div class="create-character content">
-        <form>
+        <form action="/characters" method="POST">
 
             <h2>Add a New Member to your Team</h2>
 
             <label for="name">Character's Name</label>
-            <input type="text" id="name" required>
+            <input type="text" id="name" name="name" required>
 
             <label for="species">Character's Species</label>
-            <input type="text" id="species" required>
+            <input type="text" id="species" name="species" required>
 
             <label for="enemy">Character's Enemy</label>
-            <input type="text" id="enemy" required>
+            <input type="text" id="enemy" name="enemy" required>
 
             <label for="bio">Character's Bio</label>
-            <textarea id="body" required></textarea>
+            <textarea id="body"  name="body" ></textarea>
 
             <button>Submit</button>
             

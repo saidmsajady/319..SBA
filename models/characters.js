@@ -17,7 +17,7 @@ const characterSchema = new Schema({
     bio: {
         type: String,
     }
-}, { timestamps: true });
+});
 
 const Character = mongoose.model('members', characterSchema);
 
