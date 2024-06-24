@@ -1,12 +1,13 @@
 const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
+const Character = require('./models/characters.js')
 
 // Express App
 const app = express();
 
 // Connect to MongoDB
-const dbURI = 'mongodb+srv://saidmsajady:Y1zQShpTvxQr4fsq@mongocluster.2h7ovds.mongodb.net/dc-charcters?retryWrites=true&w=majority&appName=MongoCluster';
+const dbURI = 'mongodb+srv://saidmsajady:Y1zQShpTvxQr4fsq@mongocluster.2h7ovds.mongodb.net/dc-characters?retryWrites=true&w=majority&appName=MongoCluster';
 
 mongoose.connect(dbURI)
     .then((result) => app.listen(3000)) // Listen for Request
@@ -21,26 +22,33 @@ app.use(express.static('styles'));
 // Build in Middlewear with Morgan
 app.use(morgan('dev'));
 
+// Routes -----
 app.get('/', (req, res) => {
-    const charcters = [
-        {name: 'Batman', species: 'Human', enemy: 'The Joker'},
-        {name: 'Superman', species: 'Kryptonian', enemy: 'Lex Luther'},
-        {name: 'Wonder Woman', species: 'Demi-God', enemy: 'Cheetah'}
-    ]
-    res.render('index', { title: 'Home', charcters});
+    res.redirect('/characters');
 });
 
 app.get('/about', (req, res) => {
     res.render('about', { title: 'About' });
 });
 
-app.get('/charcter/create', (req, res) => {
-    res.render('create', { title: 'Create New Charcter' });
-})
-
 // Redirects
 app.get('/about-us', (req, res) => {
     res.redirect('/about');
+})
+
+// Character Routes
+app.get('/characters', (req, res) => {
+    Character.find().sort({ createdAt: -1})
+        .then((result) => {
+            res.render('index', { title: 'All Characters', characters: result })
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+})
+
+app.get('/characters/create', (req, res) => {
+    res.render('create', { title: 'Create New Character' });
 })
 
 // 404 page

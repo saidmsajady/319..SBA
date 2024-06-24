@@ -7,20 +7,20 @@
 
     <%- include('./partials/nav.ejs') %>
 
-    <div class="charcters content">
+    <div class="characters content">
         <h2>Current Justice League Team</h2>
         
-        <% if (charcters.length > 0) { %>
-           <% charcters.forEach(charcter => { %>
+        <% if (characters.length > 0) { %>
+           <% characters.forEach(character => { %>
 
-                <h3 class="name"><%= charcter.name %></h3>
-                <p class="species">Species: <%= charcter.species %>
-                <p class="enemy">Enemy: <%= charcter.enemy %></p>
+                <h3 class="name"><%= character.name %></h3>
+                <p class="species">Species: <%= character.species %>
+                <p class="enemy">Enemy: <%= character.enemy %></p>
                 <br>
 
             <% }) %>
         <% } else { %>   
-            <p>You have no charcters in your Justice League Team</p>
+            <p>You have no characters in your Justice League Team</p>
         <% } %>
 
     </div>
