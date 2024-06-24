@@ -1,27 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SBA | <%= title %></title>
-</head>
-<body>
 
-    <nav>
-        <div class="site-title">
-            <a href="/"><h1>SBA 319</h1></a>
-            <p>My DC Superhero Site</p>
-        </div>
-        <ul>
-            <li><a href="/">Your Justice League</a></li>
-            <li><a href="/about">About</a></li>
-            <li><a href="/charcter/create">New Charcters</a></li>
-        </ul>
-    </nav>
+<%- include('./partials/head.ejs') %>
+
+<body>
 
     <div class="not-found content">
         Sorry, page not found 
     </div>
-    
+
+    <%- include('./partials/footer.ejs') %>
+
 </body>
 </html>

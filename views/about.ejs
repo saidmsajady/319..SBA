@@ -1,23 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SBA | <%= title %></title>
-</head>
-<body>
 
-    <nav>
-        <div class="site-title">
-            <a href="/"><h1>SBA 319</h1></a>
-            <p>My DC Superhero Site</p>
-        </div>
-        <ul>
-            <li><a href="/">Your Justice League</a></li>
-            <li><a href="/about">About</a></li>
-            <li><a href="/charcter/create">New Charcters</a></li>
-        </ul>
-    </nav>
+<%- include('./partials/head.ejs') %>
+
+<body>
+    
+    <%- include('./partials/nav.ejs') %>
 
     <div class="about content">
         <h2>About Us</h2>
@@ -25,6 +13,8 @@
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio deleniti qui earum tenetur molestias rem! Sapiente possimus ratione eveniet vel magnam iste accusamus quae exercitationem.</p>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio deleniti qui earum tenetur molestias rem! Sapiente possimus ratione eveniet vel magnam iste accusamus quae exercitationem.</p>
     </div>
+
+    <%- include('./partials/footer.ejs') %>
     
 </body>
 </html>
