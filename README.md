@@ -30,24 +30,28 @@ Routes Explanation:
 
 - Home Screen:
 Route: /characters
+
 Description: This is the home screen of the application where users can view all characters.
 HTTP Method: GET
 Functionality: Retrieves and displays a list of all characters.
 
 - About Page:
 Route: /about
+
 Description: This route displays placeholder data about the application.
 HTTP Method: GET
 Functionality: Provides static information about the application.
 
 - Add Character:
 Route: /characters/create
+
 Description: This route allows users to add new characters to the database.
 HTTP Method: POST
 Functionality: Displays a form to create a new character and handles the submission to add the character to the database.
 
 - Character Details:
 Route: /characters/:id
+
 Description: This route shows detailed information about a specific character.
 HTTP Method: GET
 Functionality: Retrieves and displays details of the character with the specified ID. It also provides an option to delete the character. Delete character with the specified ID from the database.
