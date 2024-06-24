@@ -1,4 +1,5 @@
 const express = require('express');
+const morgan = require('morgan')
 
 // Express App
 const app = express();
@@ -8,6 +9,12 @@ app.set('view engine', 'ejs');
 
 // Listen for Request
 app.listen(3000);
+
+// Static Built-in Middlewear for Style Sheet
+app.use(express.static('styles'));
+
+// Build in Middlewear with Morgan
+app.use(morgan('dev'));
 
 app.get('/', (req, res) => {
     const charcters = [
