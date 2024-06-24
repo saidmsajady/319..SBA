@@ -32,6 +32,10 @@ app.get('/about', (req, res) => {
     res.render('about', { title: 'About' });
 });
 
+app.get('/characters/create', (req, res) => {
+    res.render('create', { title: 'Create New Character' });
+})
+
 // Character Routes
 app.get('/characters', (req, res) => {
     Character.find().sort({ createdAt: 1})
@@ -52,12 +56,19 @@ app.post('/characters', (req, res) => {
         })
         .catch ((err) => {
             console.log(err);
-        })
-})
+        });
+});
 
-app.get('/characters/create', (req, res) => {
-    res.render('create', { title: 'Create New Character' });
-})
+app.get('/characters/:id', (req, res) => {
+    const id = req.params.id;
+    Character.findById(id)
+        .then(result => {
+            res.render('details', { character: result, title: 'Character Details'});
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+});
 
 // 404 page
 // Middlewear

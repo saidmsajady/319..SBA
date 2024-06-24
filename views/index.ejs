@@ -13,10 +13,12 @@
         <% if (characters.length > 0) { %>
            <% characters.forEach(character => { %>
 
+            <a class="single" href="/characters/<%= character._id %>">
                 <h3 class="name"><%= character.name %></h3>
                 <p class="species">Species: <%= character.species %>
                 <p class="enemy">Enemy: <%= character.enemy %></p>
                 <br>
+            </a>
 
             <% }) %>
         <% } else { %>   
