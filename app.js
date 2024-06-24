@@ -13,7 +13,7 @@ app.get('/', (req, res) => {
     const charcters = [
         {name: 'Batman', species: 'Human', enemy: 'The Joker'},
         {name: 'Superman', species: 'Kryptonian', enemy: 'Lex Luther'},
-        {name: 'Wonder Woman', species: 'God', enemy: 'Cheetah'}
+        {name: 'Wonder Woman', species: 'Demi-God', enemy: 'Cheetah'}
     ]
     res.render('index', { title: 'Home', charcters});
 });

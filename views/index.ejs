@@ -8,14 +8,15 @@
     <%- include('./partials/nav.ejs') %>
 
     <div class="charcters content">
-        <h2>Justice League Team</h2>
+        <h2>Current Justice League Team</h2>
         
         <% if (charcters.length > 0) { %>
            <% charcters.forEach(charcter => { %>
 
                 <h3 class="name"><%= charcter.name %></h3>
-                <p class="species">Species: <%= charcter.species %></->
+                <p class="species">Species: <%= charcter.species %>
                 <p class="enemy">Enemy: <%= charcter.enemy %></p>
+                <br>
 
             <% }) %>
         <% } else { %>   
