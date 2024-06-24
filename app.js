@@ -70,6 +70,18 @@ app.get('/characters/:id', (req, res) => {
         });
 });
 
+app.delete('/characters/:id', (req, res) => {
+    const id = req.params.id;
+
+    Character.findByIdAndDelete(id)
+        .then((result) => {
+            res.json({ redirect: '/characters' })
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+})
+
 // 404 page
 // Middlewear
 app.use((req, res) => {
